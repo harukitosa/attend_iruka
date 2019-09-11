@@ -62,11 +62,11 @@ export default {
         }
     },
     mounted: async function() {
-        let res = await axios.get('https://attend-iruka.herokuapp.com/get_member_list/:'+this.list_id, {
+        let res = await axios.get('http://localhost:8000/get_member_list/:'+this.list_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
         })
         this.users = res.data
-        let res2 = await axios.get('https://attend-iruka.herokuapp.com/get_all_member_list/:'+this.list_id, {
+        let res2 = await axios.get('http://localhost:8000/get_all_member_list/:'+this.list_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
         })
         this.absent_users = res2.data

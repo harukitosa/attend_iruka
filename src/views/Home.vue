@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted: async function(){
-    let res = await axios.get('https://attend-iruka.herokuapp.com/get_user/:'+this.id, {
+    let res = await axios.get('http://localhost:8000/get_user/:'+this.id, {
       headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
     })
     this.user = res.data

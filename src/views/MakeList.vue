@@ -35,7 +35,7 @@ export default {
         change(){
             var user = firebase.auth().currentUser;
             this.show = true
-            axios.post('https://attend-iruka.herokuapp.com/insert_list/:'+this.$route.params.id,
+            axios.post('http://localhost:8000/insert_list/:'+this.$route.params.id,
                        {
                            password: this.password,
                            user_id: user.uid

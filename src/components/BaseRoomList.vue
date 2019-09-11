@@ -36,11 +36,11 @@ export default {
         }
     },
     mounted:async function(){
-        let res = await axios.get('https://attend-iruka.herokuapp.com/get_owner_room/:'+this.user_id, {
+        let res = await axios.get('http://localhost:8000/get_owner_room/:'+this.user_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
         })
         this.items = res.data
-        let res_register = await axios.get('https://attend-iruka.herokuapp.com/get_member_room/:'+this.user_id, {
+        let res_register = await axios.get('http://localhost:8000/get_member_room/:'+this.user_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}            
         })
         this.lists = res_register.data

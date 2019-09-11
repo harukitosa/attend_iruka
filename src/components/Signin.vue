@@ -18,27 +18,27 @@
 <script>
 import firebase from 'firebase'
 export default {
-  name: 'Signin',
-  data: function () {
-    return {
-      email: '',
-      password: ''
+    name: 'Signin',
+    data: function () {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+        signIn: function() {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
+                console.log("res.user.qa:"+res.user.qa)
+                res.user.getIdToken().then(idToken => {
+                    localStorage.setItem("jwt", idToken.toString());
+                });
+                this.$router.push('/')
+            }, err => {
+                alert(err.message)
+            })
+            console.log("jwt:"+localStorage.getItem('jwt'))
+        }
     }
-  },
-  methods: {
-    signIn: function() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        console.log("res.user.qa:"+res.user.qa)
-        res.user.getIdToken().then(idToken => {
-          localStorage.setItem("jwt", idToken.toString());
-        });
-        this.$router.push('/')
-      }, err => {
-        alert(err.message)
-      })
-      console.log("jwt:"+localStorage.getItem('jwt'))
-    }
-  }
 }
 </script>
 

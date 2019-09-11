@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     store() {
-      axios.post('https://attend-iruka.herokuapp.com/insert_user/:'+this.id,
+      axios.post('http://localhost:8000/insert_user/:'+this.id,
       {
         name: this.name,
         grade: this.grade,
