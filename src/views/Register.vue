@@ -36,7 +36,7 @@ export default {
     },
     methods: {        
         postpassword() {
-            axios.get('http://localhost:8000/check_room_pass/:'+this.password+'/:'+this.id, {
+            axios.get('https://attend-iruka.herokuapp.com/check_room_pass/:'+this.password+'/:'+this.id, {
                 headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
             })
                 .then(response => {

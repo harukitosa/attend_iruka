@@ -45,7 +45,7 @@ export default {
     methods: {
         send() {
             this.dismissCountDown = this.dismissSecs
-            axios.post('http://localhost:8000/insert_room/:'+this.user_id,
+            axios.post('https://attend-iruka.herokuapp.com/insert_room/:'+this.user_id,
                        {
                            owner_id: this.user_id,
                            title: this.title,
