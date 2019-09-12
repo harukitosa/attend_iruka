@@ -15,12 +15,12 @@
         variant="warning"
         @click="change"
         class="button"
-        >出席簿に登録する</b-button>
+        >登録する</b-button>
         <!-- fixed-bottom -->
         <b-button
         @click="make_attendance"
         class="button primary"
-        >出席簿を作成する</b-button>
+        >作成する</b-button>
         <BaseRoomList/>
       </b-container>
       <BaseSlide/>
@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted: async function(){
-    let res = await axios.get('https://attend-iruka.herokuapp.com/get_user/:'+this.id, {
+    let res = await axios.get(process.env.VUE_APP_HOST + '/get_user/:'+this.id, {
       headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
     })
     this.user = res.data

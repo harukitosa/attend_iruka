@@ -44,7 +44,7 @@ export default {
     },
     methods: {        
         postpassword() {
-            axios.get('https://attend-iruka.herokuapp.com/check_list_pass/:'+this.password+'/:'+ this.$route.params.id + '/:'+ this.id, {
+            axios.get(process.env.VUE_APP_HOST+ '/check_list_pass/:'+this.password+'/:'+ this.$route.params.id + '/:'+ this.id, {
                 headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
             })
                 .then(response => {

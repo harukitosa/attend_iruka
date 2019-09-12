@@ -2,20 +2,18 @@
 <template lang="html">
 <div class="container" fluid>
     <h3>登録されている出席簿</h3>
-  <div v-for="list in lists" v-bind:key="list.id">
+  <div v-for="list in lists" v-bind:key="`second-${list.id}`">
     <router-link :to="{name: 'Attendance', params:{id: list.id}}">
       <b-card class="card">
         {{list.title}}
-        <li>{{list.description}}</li>
       </b-card>
     </router-link>   
   </div> 
   <h3>あなたの出席簿</h3>
-  <div v-for="item in items" v-bind:key="item.id">
+  <div v-for="item in items" v-bind:key="`first-${item.id}`">
     <router-link :to="{ name: 'list', params: {id: item.id, title: item.title} }">
       <b-card class="card">
         {{item.title}}
-        <li>{{item.description}}</li>
       </b-card>
     </router-link>
   </div>
@@ -36,11 +34,11 @@ export default {
         }
     },
     mounted:async function(){
-        let res = await axios.get('https://attend-iruka.herokuapp.com/get_owner_room/:'+this.user_id, {
+        let res = await axios.get(process.env.VUE_APP_HOST+'/get_owner_room/:'+this.user_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
         })
         this.items = res.data
-        let res_register = await axios.get('https://attend-iruka.herokuapp.com/get_member_room/:'+this.user_id, {
+        let res_register = await axios.get(process.env.VUE_APP_HOST+'/get_member_room/:'+this.user_id, {
             headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}            
         })
         this.lists = res_register.data
@@ -58,6 +56,7 @@ export default {
 .card {
     width: 90vw;
     max-width: 600px;
+    font-size: 24px;
 }
 h3 {
     margin-top: 40px;

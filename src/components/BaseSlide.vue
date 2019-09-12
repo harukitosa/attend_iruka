@@ -1,21 +1,18 @@
 <template lang="html">
-  <Slide>
-    <router-link id="home" to="/">
-      <span>Home</span>
-    </router-link>
-    <router-link id="signin" to="/signin">
-      <span>Signin</span>
-    </router-link>
-    <router-link to="/attendance">
-      <span>Attend</span>
-    </router-link>
-    <router-link to="/setting">
-      <span>Setting</span>
-    </router-link>
-    <router-link to="/make_room">
-      <span>CreateRoom</span>
-    </router-link>
-  </Slide>
+<Slide class="sli">
+  <router-link id="home" to="/">
+    <span>Home</span>
+  </router-link>
+  <router-link to="/setting">
+    <span>Setting</span>
+  </router-link>
+  <router-link to="/make_room">
+    <span>CreateRoom</span>
+  </router-link>
+  <router-link to="/about">
+    <span>about</span>
+  </router-link>
+</Slide>
 </template>
 
 <script>
@@ -29,4 +26,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .sli {
+  left:0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:24;
+  }
 </style>

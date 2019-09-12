@@ -1,18 +1,24 @@
 <template>
-  <div class="">
-    <div class="signin">
-      <h2>ログイン</h2>
-      <input type="text" placeholder="Email" v-model="email">
-      <input type="password" placeholder="Password" v-model="password">
-      <button @click="signIn">ログイン</button>
-      <p>アカウントを持っていますか?
-        <router-link class="link" to="/signup">新規登録はこちら</router-link>
-      </p>
-    </div>
-    <div class="under-container">
-
-    </div>
+<div class="">
+  
+  <router-link to="/about" class="header">
+    <h1>IRUKA</h1>
+    <p>電子出席簿アプリ</p>
+  </router-link>
+  
+  <div class="signin">
+    <h2>ログイン</h2>
+    <input type="text" placeholder="Email" v-model="email">
+    <input type="password" placeholder="Password" v-model="password">
+    <button class="button" @click="signIn">ログイン</button>
+    <p>アカウントを持っていますか?
+      <router-link class="link" to="/signup">新規登録はこちら</router-link>
+    </p>
   </div>
+  <div class="under-container">
+    <b-card class="card" v-on:click="about">about IRUKA</b-card>
+  </div>
+</div>
 </template>
 
 <script>
@@ -37,32 +43,49 @@ export default {
                 alert(err.message)
             })
             console.log("jwt:"+localStorage.getItem('jwt'))
+        },
+        about: function() {
+            this.$router.push('/about')
         }
     }
 }
 </script>
 
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+h2 {
+    font-weight: normal;
+}
+h1 {
+    font-size: 55px;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #1985c1;
+    color: #1985c1;
 }
+.header {
+    height: 25vh;
+    background-color: #97e6ff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: #1985c1;
+}
+
+
 .signin {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 55vh;
   background-color: #97e6ff;
 }
 .under-container {
@@ -77,7 +100,7 @@ input {
   margin: 10px 0;
   padding: 10px;
 }
-button {
+.button {
   margin: 10px 0;
   padding: 10px;
   width: 100px;
@@ -88,4 +111,12 @@ button {
   border-style: none;
 }
 
+.card {
+    width: 50vw;
+    text-align: center;;
+    color: black;
+    max-width: 500px;
+    background-color: #97e6ff;
+    font-size: 18px;
+}
 </style>

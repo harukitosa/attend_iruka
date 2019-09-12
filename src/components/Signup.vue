@@ -2,9 +2,7 @@
   <div class="">
     <div class="signup">
       <h2>新規登録</h2>
-      <span>メールアドレス</span>
       <input type="text" placeholder="Email" v-model="email">
-      <span>パスワード</span>
       <input type="password" placeholder="Password" v-model="password">
       <button @click="signUp">登録</button>
       <p>すでにアカウントをもっていますか?</p>

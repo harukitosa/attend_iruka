@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     store() {
-      axios.post('https://attend-iruka.herokuapp.com/insert_user/:'+this.id,
+      axios.post(process.env.VUE_APP_HOST+'/insert_user/:'+this.id,
       {
         name: this.name,
         grade: this.grade,

@@ -45,7 +45,7 @@ export default {
     methods: {
         send() {
             this.dismissCountDown = this.dismissSecs
-            axios.post('https://attend-iruka.herokuapp.com/insert_room/:'+this.user_id,
+            axios.post(process.env.VUE_APP_HOST+ '/insert_room/:'+this.user_id,
                        {
                            owner_id: this.user_id,
                            title: this.title,

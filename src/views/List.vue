@@ -33,7 +33,7 @@ export default {
         BaseSlide
     },
     mounted: async function() {
-        let res_room_list = await axios.get('https://attend-iruka.herokuapp.com/get_room_list/:' + this.$route.params.id,{
+        let res_room_list = await axios.get(process.env.VUE_APP_HOST+'/get_room_list/:' + this.$route.params.id,{
                   headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
         })
         this.lists = res_room_list.data
