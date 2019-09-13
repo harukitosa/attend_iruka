@@ -3,7 +3,7 @@
   <router-link id="home" to="/">
     <span>Home</span>
   </router-link>
-  <router-link to="/setting">
+  <router-link to="/edit_user">
     <span>Setting</span>
   </router-link>
   <router-link to="/make_room">

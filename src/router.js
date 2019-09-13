@@ -44,6 +44,12 @@ let router = new Router({
             meta: {requiresAuth: true}
         },
         {
+            path: '/edit_user',
+            name: 'edituser',
+            component: () => import('./views/EditUser.vue'),
+            meta: {requiresAuth: true}
+        },
+        {
             path: '/make_room',
             name: 'make_attendance',
             component: () => import('./views/MakeAttendance.vue'),
