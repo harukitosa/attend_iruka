@@ -64,9 +64,7 @@ export default {
                     },
                 }, )
                 .then(function(response) {
-                    console.log(response)
                     self.check = response.data
-                    console.log(self.check)
                 })
             this.show = !this.show
         },

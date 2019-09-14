@@ -41,7 +41,6 @@ export default {
                 })
                 .then(response => {
                     this.check = response.data
-                    console.log(response.data)
                 })
             this.show = !this.show
         },
