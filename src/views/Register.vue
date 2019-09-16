@@ -1,4 +1,3 @@
-
 <template lang="html">
     <div class="main">
         <div class="attendance" v-if="show">

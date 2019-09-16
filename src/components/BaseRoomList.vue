@@ -2,7 +2,7 @@
   <template lang="html">
   <div class="container" fluid>
     <div v-if="show">
-      <h3>登録されている出席簿</h3>
+      <h3>登録中の出席簿</h3>
     <div v-for="list in lists" v-bind:key="`second-${list.id}`">
       <router-link :to="{name: 'Attendance', params:{id: list.id}}">
         <b-card class="card">

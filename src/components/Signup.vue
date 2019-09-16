@@ -1,7 +1,8 @@
 <template>
   <div class="">
     <div class="signup">
-      <h2>新規登録</h2>
+      <h2 v-if="!show">新規登録</h2>
+      <h2 v-else>登録完了</h2>
       <input type="text" placeholder="Email" v-model="email">
       <input type="password" placeholder="Password" v-model="password">
       <button @click="signUp">登録</button>
@@ -21,7 +22,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      show: false,
     }
   },
   methods: {
@@ -32,6 +34,7 @@ export default {
       }).catch(error => {
         alert(error.message)
       })
+      this.show = true
     }
   }
 }
