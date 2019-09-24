@@ -2,7 +2,8 @@
   <div class="header">
     <button @click="back">◁</button>
     <p>{{this.year}}/{{this.month}}/{{this.day}}</p>
-    <button @click="go">▷</button>
+    <button v-if="this.count != 0" @click="go">▷</button>
+    <button v-else>☒</button>
   </div>
 </template>
 
@@ -38,7 +39,9 @@ export default {
     },
     go() {
       var data = new Date();
-      this.count = this.count + 1;
+      if (this.count < 0) {
+        this.count = this.count + 1;
+      }
       data.setDate(data.getDate() + this.count);
       this.year = data.getYear() + 1900;
       this.month = data.getMonth() + 1;
@@ -75,10 +78,10 @@ p {
 }
 
 button {
-    text-decoration: none;
-    background-color: #1985c1;
-    color: white;
-    border: none;
-    font-size: 24px;
+  text-decoration: none;
+  background-color: #1985c1;
+  color: white;
+  border: none;
+  font-size: 24px;
 }
 </style>
