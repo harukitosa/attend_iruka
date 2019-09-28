@@ -1,14 +1,10 @@
 <template>
   <div class="container">
     <h1>IRUKA</h1>
-    <p>home</p>
-    <button @click="attend">出欠</button>
-    <button>記録を見る</button>
-    <button>生徒を追加</button>
+    <button @click="attend">本日の出欠</button>
+    <button @click="rool_book">記録を見る</button>
+    <button @click="newdata">生徒を追加</button>
     <button @click="signOut">ログアウト</button>
-    <p>{{this.year}}</p>
-    <p>{{this.month}}</p>
-    <p>{{this.day}}</p>
   </div>
 </template>
 
@@ -28,8 +24,14 @@ export default {
     }
   },
   methods: {
+    rool_book: function() {
+      this.$router.push("/roll_book");
+    },
     attend: function() {
-      this.$router.push("/roll_call/"+this.year+"/"+this.month+"/"+this.day+"/"+0);
+      this.$router.push("/roll_call/"+this.year+"/"+this.month+"/"+this.day);
+    },
+    newdata: function() {
+      this.$router.push("/insert_new_data");
     },
     signOut: function() {
       firebase

@@ -1,0 +1,32 @@
+.head {
+    height: 10vh;
+}
+
+.white {
+    background-color: white;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.footer {
+    width: 100vw;
+    background-color: #1985c1;
+    height: 10vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.button {
+    background-color: yellow;
+    border: 10px solid #97e6ff;
+    width: 40vw;
+    border-radius: 30px; 
+    margin: 10px;
+}
+
+.button:active {
+    border: none;
+}

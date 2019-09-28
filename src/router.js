@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import Signup from './views/Signup.vue'
 import Signin from './views/Signin.vue'
 import RollCall from './views/RollCall.vue'
+import InsertNewData from './views/InsertNewData.vue'
+import RollBook from './views/RollBook.vue'
 import firebase from 'firebase'
 Vue.use(Router)
 
@@ -32,9 +34,21 @@ let router = new Router({
             component: Signin
         },
         {
-            path: '/roll_call/:year/:month/:day/:count',
+            path: '/roll_call/:year/:month/:day',
             name: 'RollCall',
             component: RollCall,
+            meta: {requiresAuth: true}
+        },
+        {
+            path: '/insert_new_data',
+            name: 'InsertNewData',
+            component: InsertNewData,
+            meta: {requiresAuth: true}
+        },
+        {
+            path: '/roll_book',
+            name: 'RollBook',
+            component: RollBook,
             meta: {requiresAuth: true}
         }
     ]
