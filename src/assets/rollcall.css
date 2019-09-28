@@ -27,6 +27,6 @@
     margin: 10px;
 }
 
-.button:active {
+.button:hover {
     border: none;
 }

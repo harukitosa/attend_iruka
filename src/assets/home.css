@@ -14,7 +14,7 @@ button {
     font-size: 24px;
   }
   
-  button:active {
+  button:hover {
     background: #1985c1;
     color: white;
     outline: none;

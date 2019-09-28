@@ -8,6 +8,7 @@
         :rows="items"
         @on-row-click="onRowClick"
         :row-style-class="rowStyleClassFn"
+        ontouchstart=""
       ></vue-good-table>
     </div>
     <div class="footer fixed-bottom">
@@ -118,6 +119,7 @@ export default {
           }
         }
       }
+      this.rowStyleClassFn(params.row)
     }
   }
 };
