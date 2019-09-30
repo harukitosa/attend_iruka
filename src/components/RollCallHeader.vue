@@ -24,6 +24,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 p {

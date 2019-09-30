@@ -11,43 +11,45 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-import axios from 'axios'
+import firebase from "firebase";
+import axios from "axios";
 export default {
-    name: "RollBook",
-    data: function() {
-        var user = firebase.auth().currentUser;
-        var now = new Date()
-        return {
-            items: [],
-            ownerid: user.uid,
-            year: now.getYear() + 1900,
-            month: now.getMonth() + 1,
-            columns: [{
-                    label: "Name",
-                    field: "name",
-                    filterable: true
-                },
-                {
-                    label: "出席",
-                    field: "attend"
-                },
-                {
-                    label: "欠席",
-                    field: "absent"
-                }
-            ],
-        };
-    },
-    mounted: async function() {
-        let res = await axios.get(
-            process.env.VUE_APP_HOST + "/get_month_data/:" + this.ownerid + "/:" + this.year + "/:" + this.month, {
-                headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
-            }
-        );
-        this.items = res.data;
-        console.log(this.items);
-    }
+  name: "RollBook",
+  data: function() {
+    var user = firebase.auth().currentUser;
+    // var now = new Date()
+    return {
+      items: [],
+      ownerid: user.uid,
+      // year: now.getYear() + 1900,
+      // month: now.getMonth() + 1,
+      columns: [
+        {
+          label: "出席番号",
+          field: "number",
+          filterable: true
+        },
+        {
+          label: "出席",
+          field: "attend"
+        },
+        {
+          label: "欠席",
+          field: "absent"
+        }
+      ]
+    };
+  },
+  mounted: async function() {
+    let res = await axios.get(
+      process.env.VUE_APP_HOST + "/get_roll_data/:" + this.ownerid,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
+      }
+    );
+    this.items = res.data;
+    console.log(this.items);
+  }
 };
 </script>
 
@@ -58,6 +60,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 p {
