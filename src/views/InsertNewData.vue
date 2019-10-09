@@ -6,7 +6,6 @@
       <input type="text" placeholder="組" v-model="studentClass" />
       <span>追加する人数を指定してください</span>
       <input type="text" placeholder="人数" v-model="studentNumber" />
-      <!-- <input type="name" placeholder="名前" v-model="studentName" /> -->
     </div>
     <button @click="submit" class="button">登録</button>
   </div>
@@ -23,7 +22,6 @@ export default {
       studentGrade: "",
       studentClass: "",
       studentNumber: "",
-      // studentName: "",
       owner_id: user.uid
     };
   },
@@ -34,8 +32,6 @@ export default {
         {
           grade: this.studentGrade,
           class: this.studentClass,
-          // number: this.studentNumber,
-          // name: this.studentName,
           ownerID: this.owner_id
         },
         {
@@ -47,7 +43,6 @@ export default {
       );
       this.studentGrade = '';
       this.studentClass = '';
-      // this.studentName = '';
       this.studentNumber = '';
     }
   }

@@ -2,22 +2,22 @@
   <div>
     <RollCallHeader />
     <div class="head"></div>
-    <div v-if="this.show">
+    <div v-if="show">
       <h1 v-if="this.check">出欠を取りました。</h1>
       <h1 v-else>本日の出席はすでに保存されています。</h1>
     </div>
     <div v-else>
       <vue-good-table
+        v-if="wait"
         :columns="columns"
         :rows="items"
         @on-row-click="onRowClick"
         :row-style-class="rowStyleClassFn"
         ontouchstart
-      ></vue-good-table>
+      />
+      <b-spinner v-else variant="warning" />
     </div>
-    <div class="foot">
-
-    </div>
+    <div class="foot"></div>
     <div class="footer fixed-bottom">
       <button class="button" @click="roll_call">保存</button>
     </div>
@@ -53,11 +53,6 @@ export default {
           field: "number",
           filterable: true
         },
-        // {
-        //   label: "Name",
-        //   field: "name",
-        //   filterable: true
-        // },
         {
           label: "status",
           field: "status"
@@ -66,7 +61,8 @@ export default {
       items: [],
       check: true,
       show: false,
-      ownerid: user.uid
+      ownerid: user.uid,
+      wait: true
     };
   },
   mounted: async function() {
@@ -82,6 +78,7 @@ export default {
   methods: {
     roll_call() {
       var self = this;
+      this.wait = false;
       for (var i = 0; i < Object.keys(this.items).length; i++) {
         axios
           .post(
@@ -110,10 +107,9 @@ export default {
           )
           .then(function(response) {
             self.check = response.data;
-            console.log(response.data);
             //why動作する
+            self.show = true;
           });
-        this.show = true;
       }
     },
     rowStyleClassFn(row) {

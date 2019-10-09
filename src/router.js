@@ -6,6 +6,7 @@ import Signin from './views/Signin.vue'
 import RollCall from './views/RollCall.vue'
 import InsertNewData from './views/InsertNewData.vue'
 import RollBook from './views/RollBook.vue'
+import DetailStudent from './views/DetailStudent.vue'
 import firebase from 'firebase'
 Vue.use(Router)
 
@@ -50,6 +51,12 @@ let router = new Router({
             name: 'RollBook',
             component: RollBook,
             meta: {requiresAuth: true}
+        },
+        {
+            path: '/detail_student/:id/:number',
+            name: 'DetailStudent',
+            component: DetailStudent,
+            meta: {requiresAuth: true}
         }
     ]
 })
@@ -58,7 +65,7 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
     let currentUser = firebase.auth().currentUser
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-    if (requiresAuth && !currentUser) next('signin')
+    if (requiresAuth && !currentUser) next({path: '/signin'})
     else if (!requiresAuth && currentUser) next()
     else next()
 })

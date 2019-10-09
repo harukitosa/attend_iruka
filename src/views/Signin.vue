@@ -14,6 +14,9 @@
         アカウントを持っていますか?
         <router-link class="link" to="/signup">新規登録はこちら</router-link>
       </p>
+      <div v-if="show">
+        <b-spinner variant="warning" />
+      </div>
     </div>
     <div class="under-container"></div>
   </div>
@@ -26,11 +29,13 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      show: false
     };
   },
   methods: {
     signIn: function() {
+      this.show = true;
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
@@ -46,7 +51,6 @@ export default {
             alert(err.message);
           }
         );
-      this.wait = false;
     }
   }
 };
@@ -119,7 +123,7 @@ input {
 }
 
 .button:hover {
-    padding: 10px;
+  padding: 10px;
 }
 .card {
   width: 50vw;
