@@ -8,13 +8,14 @@ import InsertNewData from './views/InsertNewData.vue'
 import RollBook from './views/RollBook.vue'
 import DetailStudent from './views/DetailStudent.vue'
 import firebase from 'firebase'
+import VueAnalytics from 'vue-analytics'
 Vue.use(Router)
+
 
 let router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [
-        {
+    routes: [{
             path: '*',
             redirect: 'signin'
         },
@@ -22,7 +23,9 @@ let router = new Router({
             path: '/',
             name: 'home',
             component: Home,
-            meta: {requiresAuth: true}
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/signup',
@@ -38,25 +41,33 @@ let router = new Router({
             path: '/roll_call/:year/:month/:day',
             name: 'RollCall',
             component: RollCall,
-            meta: {requiresAuth: true}
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/insert_new_data',
             name: 'InsertNewData',
             component: InsertNewData,
-            meta: {requiresAuth: true}
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/roll_book',
             name: 'RollBook',
             component: RollBook,
-            meta: {requiresAuth: true}
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/detail_student/:id/:number',
             name: 'DetailStudent',
             component: DetailStudent,
-            meta: {requiresAuth: true}
+            meta: {
+                requiresAuth: true
+            }
         }
     ]
 })
@@ -65,9 +76,17 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
     let currentUser = firebase.auth().currentUser
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-    if (requiresAuth && !currentUser) next({path: '/signin'})
+    if (requiresAuth && !currentUser) next({
+        path: '/signin'
+    })
     else if (!requiresAuth && currentUser) next()
     else next()
 })
+
+Vue.use(VueAnalytics, {
+    id: 'UA-144819780-5',
+    router
+})
+
 
 export default router
