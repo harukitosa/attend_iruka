@@ -5,7 +5,7 @@
     </div>
     <div class="head"></div>
     <div>
-      <vue-good-table :columns="columns" :rows="items" @on-row-click="onRowClick"></vue-good-table>
+      <vue-good-table :columns="columns" :rows="items" @on-row-click="onRowClick" ontouchstart></vue-good-table>
     </div>
   </div>
 </template>
@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     onRowClick(params) {
-      this.$router.push("/detail_student/:"+params.row.studentID+"/:"+params.row.number);
+      this.$router.push(
+        "/detail_student/:" + params.row.studentID + "/:" + params.row.number
+      );
     }
   },
   mounted: async function() {
