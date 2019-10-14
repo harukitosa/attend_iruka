@@ -77,7 +77,7 @@ export default {
         headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
       }
     );
-    this.items = res.data;
+    this.items = res.data.reverse();
   },
   methods: {
     async reload() {
@@ -87,7 +87,7 @@ export default {
           headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
         }
       );
-      this.items = res.data;
+      this.items = res.data.reverse();
       this.show_2 = !this.show_2;
       this.show = !this.show;
     },
