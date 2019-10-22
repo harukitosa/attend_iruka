@@ -44,7 +44,7 @@ export default {
       );
     }
   },
-  mounted: async function() {
+  created: async function() {
     let res = await axios.get(
       process.env.VUE_APP_HOST + "/get_roll_data/:" + this.ownerid,
       {

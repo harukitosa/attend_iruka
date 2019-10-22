@@ -8,10 +8,6 @@
         </div>
         <div v-else>
             <vue-good-table v-if="wait" :columns="columns" :rows="items" @on-row-click="onRowClick" :row-style-class="rowStyleClassFn" ontouchstart />
-            <div v-else>
-                <b-spinner variant="warning" />
-                <p>Now loading ...</p>
-            </div>
         </div>
         <div class="foot"></div>
         <div class="footer fixed-bottom">
@@ -60,7 +56,7 @@ export default {
             wait: false
         };
     },
-    mounted: async function() {
+    created: async function() {
         let res = await axios.get(
             process.env.VUE_APP_HOST + "/get_students/:" + this.ownerid, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
