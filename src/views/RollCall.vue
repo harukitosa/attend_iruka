@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rollcall">
         <RollCallHeader />
         <div class="head"></div>
         <div v-if="show">
@@ -7,7 +7,7 @@
             <h1 v-else>本日の出席はすでに保存されています。</h1>
         </div>
         <div v-else>
-            <vue-good-table v-if="wait" :columns="columns" :rows="items" @on-row-click="onRowClick" :row-style-class="rowStyleClassFn" ontouchstart />
+            <vue-good-table v-if="wait" :columns="columns" :rows="items" @on-row-click="onRowClick" :row-style-class="rowStyleClassFn" ontouchstart class="table" />
         </div>
         <div class="foot"></div>
         <div class="footer fixed-bottom">

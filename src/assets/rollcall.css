@@ -35,3 +35,19 @@
 .foot {
     height: 25vh;
 }
+.table {
+    max-width: 1000px;
+}
+.rollcall {
+    display: flex;
+    flex-flow:column nowrap;
+    width: 100vw;
+    max-width: 1000px;
+    margin: auto;
+}
+
+div {
+    max-width: 1000px;
+    width: 100vw;
+    margin: auto;
+}
