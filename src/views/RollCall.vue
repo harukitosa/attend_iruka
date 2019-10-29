@@ -8,8 +8,8 @@
         </div>
         <div v-else>
             <vue-good-table v-if="wait" :columns="columns" :rows="items" @on-row-click="onRowClick" :row-style-class="rowStyleClassFn" ontouchstart class="table" />
-         </div>
-            <b-spinner variant="warning" label="Spinning" v-if="!wait"></b-spinner>
+        </div>
+        <b-spinner variant="warning" label="Spinning" v-if="!wait"></b-spinner>
         <div class="foot"></div>
         <div class="footer fixed-bottom">
             <button class="button" @click="roll_call">保存</button>
@@ -128,6 +128,12 @@ export default {
 };
 </script>
 
-<style src="../assets/rollcall.css" scoped>
+<style src="../assets/rollcall.css">
+.white {
+    background-color: white;
+}
 
+.yellow {
+    background-color: yellow;
+}
 </style>

@@ -4,8 +4,8 @@
       <p>出席情報</p>
     </div>
 
-    <div v-if="this.show" class="card">
-      <div v-if="!this.show_2">
+    <div v-if="this.show" class="card-pop">
+      <div  class="pop" v-if="!this.show_2">
         <p>この日付の出席情報を変更しますか?</p>
         <p>{{this.info.year}}年{{this.info.month}}月{{this.info.day}}日</p>
         <p>現在:{{this.info.status}}</p>
@@ -16,7 +16,7 @@
         " class="btn-yellow">back</button>
         </div>
       </div>
-      <div v-else>
+      <div class="pop" v-else>
         <p>変更しました</p>
         <div class="group">
           <button @click="reload" class="btn-blue">戻る</button>
@@ -146,7 +146,7 @@ export default {
 }
 
 p {
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
   margin-top: 15px;
 }
@@ -159,17 +159,20 @@ p {
   margin-top: 50px;
 }
 
-.card {
+.card-pop {
   z-index: 2;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
   width: 90vw;
-  padding: 20px;
   border-radius: 40px;
   max-width: 600px;
+  background-color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 
 button {
@@ -190,5 +193,15 @@ button {
 
 .group {
   display: flex;
+  width: 70vw;
+  max-width: 600px;
+}
+
+.pop {
+  position: absolute;
+  width: 90vw;
+  margin: auto;
+  max-width: 600px;
+  background-color: white;
 }
 </style>
