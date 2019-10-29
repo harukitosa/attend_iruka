@@ -17,7 +17,8 @@ export default {
     name: "RollBook",
     data: function() {
         var user = firebase.auth().currentUser;
-        return {
+        return {            
+
             items: [],
             ownerid: user.uid,
             columns: [{
@@ -31,14 +32,14 @@ export default {
                 },
                 {
                     label: "欠席",
-                    field: "absent"
+                    field: "absent"            
                 }
             ]
         };
     },
     methods: {
         onRowClick(params) {
-            this.$router.push(
+            this.$router.push(   
                 "/detail_student/:" + params.row.studentID + "/:" + params.row.number
             );
         }
@@ -61,9 +62,11 @@ export default {
     align-items: center;
     width: 100vw;
     max-width: 1000px;
-    margin: auto;
+    margin: auto
 }
-
+.head {
+    height: 10vh;
+}
 .header {
     background-color: #1985c1;
     display: flex;

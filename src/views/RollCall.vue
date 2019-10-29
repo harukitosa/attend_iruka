@@ -8,7 +8,8 @@
         </div>
         <div v-else>
             <vue-good-table v-if="wait" :columns="columns" :rows="items" @on-row-click="onRowClick" :row-style-class="rowStyleClassFn" ontouchstart class="table" />
-        </div>
+         </div>
+            <b-spinner variant="warning" label="Spinning" v-if="!wait"></b-spinner>
         <div class="foot"></div>
         <div class="footer fixed-bottom">
             <button class="button" @click="roll_call">保存</button>
@@ -68,7 +69,7 @@ export default {
     methods: {
         roll_call() {
             var self = this;
-            this.wait = false;
+            this.wait = !this.wait;
             for (var i = 0; i < Object.keys(this.items).length; i++) {
                 axios
                     .post(
@@ -97,6 +98,7 @@ export default {
                         self.check = response.data;
                         //why動作する
                         self.show = true;
+                        self.wait = true;
                     });
             }
         },
@@ -126,6 +128,6 @@ export default {
 };
 </script>
 
-<style src="../assets/rollcall.css">
+<style src="../assets/rollcall.css" scoped>
 
 </style>

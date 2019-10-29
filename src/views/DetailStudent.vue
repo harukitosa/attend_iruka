@@ -169,12 +169,14 @@ p {
   width: 90vw;
   padding: 20px;
   border-radius: 40px;
+  max-width: 600px;
 }
 
 button {
   width: 30vw;
   height: 40px;
   margin: auto;
+  max-width: 200px;
 }
 
 .btn-yellow {

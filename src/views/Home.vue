@@ -20,14 +20,14 @@ export default {
     return {
       year: now.getYear() + 1900,
       month: now.getMonth() + 1,
-      day: now.getDate()
+      day: now.getDate(),
     };
   },
   methods: {
     rool_book: function() {
       this.$router.push("/roll_book");
     },
-    attend: function() {
+   attend: function() {
       this.$router.push(
         "/roll_call/" + this.year + "/" + this.month + "/" + this.day
       );
