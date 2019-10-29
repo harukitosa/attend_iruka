@@ -14,7 +14,7 @@
         アカウントを持っていますか?
         <router-link class="link" to="/signup">新規登録はこちら</router-link>
       </p>
-      <div v-if="show">
+      <div  class="spin" v-if="show">
         <b-spinner variant="warning" />
       </div>
     </div>
@@ -132,5 +132,11 @@ input {
   max-width: 500px;
   background-color: #97e6ff;
   font-size: 18px;
+}
+.spin {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 100vw;
 }
 </style>

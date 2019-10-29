@@ -203,5 +203,11 @@ button {
   margin: auto;
   max-width: 600px;
   background-color: white;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  border: 1px solid black;
 }
 </style>
