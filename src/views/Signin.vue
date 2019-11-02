@@ -30,8 +30,10 @@ export default {
     return {
       email: "",
       password: "",
-      show: false
+      show: false,
     };
+  },
+  mounted: {
   },
   methods: {
     signIn: function() {

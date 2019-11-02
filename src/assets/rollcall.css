@@ -1,7 +1,6 @@
 .head {
     height: 10vh;
 }
-
 .white {
     background-color: white;
 }
@@ -10,7 +9,7 @@
     background-color: yellow;
 }
 
-.footer {
+.header {
     width: 100vw;
     background-color: #1985c1;
     height: 10vh;
